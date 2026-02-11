@@ -32,6 +32,7 @@ const ItemList = () => {
     }
   }
 
+  
   console.log(itemList);
 
   return (
@@ -59,7 +60,9 @@ const ItemList = () => {
                 return(
                   <tr key={item.itemNo}>
                     <td>{item.itemNo}</td>
-                    <td>{item.itemName}</td>
+                    <td 
+                      onClick={e => {nav('/detail')}}
+                    >{item.itemName}</td>
                     <td>{item.itemPrice}</td>
                     <td>{item.regname}</td>
                     <td>{item.regdate}</td>
@@ -75,7 +78,7 @@ const ItemList = () => {
         <button 
           type='button'
           onClick={e => {nav('/reg')}}
-        >등록</button>
+        >상품 등록</button>
       </div>
     </div>
   )

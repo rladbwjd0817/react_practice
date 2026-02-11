@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 /* 상품목록 조회 페이지 */
 
 const ItemForm = () => {
+  /* 등록 후 목록 조회 페이지로 돌아갈 useNavigate */
+  const nav = useNavigate();
+
+
   /* input에 입력한 데이터 저장할 state 변수 */
   const [regItem, setRegItem] = useState({
     itemName : '',
@@ -33,6 +38,18 @@ const ItemForm = () => {
     }
   }
 
+  /* 상품명, 가격 입력하지 않으면 등록 실행이 안되는 데이터를 저장할 state 변수  */
+  const[isDisabled, setIsDisabled] = useState(true);
+
+  /* isDisabled = true면 비활성화, isDisabled = false면 활성화 */
+  /* 상품명과 가격이 빈 문자면 비활성화, 값이 있으면 활성화 */
+  /* isDisabled 값을 바꿀 함수 */
+  const handleDisabled = () => {
+    if(regItem.itemName !== '' && regItem.itemPrice !== ''){
+      setIsDisabled(false);
+    }
+  }
+
    return (
     <div>
       <div>
@@ -50,7 +67,7 @@ const ItemForm = () => {
                   type="text" 
                   name='itemName'
                   value={regItem.itemName}
-                  onChange={e => newItemData(e)}
+                  onChange={e => {newItemData(e), handleDisabled()}}
                 />
               </td>
             </tr>
@@ -61,12 +78,12 @@ const ItemForm = () => {
                   type="text" 
                   name='itemPrice'
                   value={regItem.itemPrice}
-                  onChange={e => newItemData(e)}
+                  onChange={e => {newItemData(e), handleDisabled()}}
                 />
               </td>
             </tr>
             <tr>
-              <td>판매자</td>
+              <td>등록자명</td>
               <td>
                 <input 
                   type="text" 
@@ -77,7 +94,7 @@ const ItemForm = () => {
               </td>
             </tr>
             <tr>
-              <td>상품 설명</td>
+              <td>상품 안내</td>
               <td>
                 <textarea 
                   name="itemIntro"
@@ -93,11 +110,13 @@ const ItemForm = () => {
         {/* 상품등록버튼 -> axios로 스프링에게 전달 */}
         <button 
           type='button'
+          disabled={isDisabled}
           onClick={e => {
             postItemData()
-            alert('상품 등록 성공!!')
+            alert('상품 등록 성공^0^!!')
+            nav('/')
           }}
-        >상품 등록</button>
+        >등록</button>
       </div>
     </div>
   )
