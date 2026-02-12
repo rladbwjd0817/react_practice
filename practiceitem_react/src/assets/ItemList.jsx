@@ -10,11 +10,12 @@ const ItemList = () => {
   const [itemList, setItemList] = useState([]);
 
    /* No = cnt 값 증가하는 변수 생성 */
-  /* const [cnt, setCnt] = useState(0); */
+  /* const [cnt, setCnt] = useState(); */
 
   /* cnt값 1씩 증가하는 함수 */
   /* const increaseCnt = () => {
     setCnt(cnt + 1);
+    
   }  */
 
   /* 마운트 시 상품목록을 조회 */
@@ -59,9 +60,11 @@ const ItemList = () => {
               itemList.map((item, index) => {
                 return(
                   <tr key={item.itemNo}>
-                    <td>{item.itemNo}</td>
+                    <td>
+                      {itemList.length - index  - 1}
+                    </td>
                     <td 
-                      onClick={e => {nav('/detail')}}
+                      onClick={e => {nav(`/detail/${item.itemNo}`)}}
                     >{item.itemName}</td>
                     <td>{item.itemPrice}</td>
                     <td>{item.regname}</td>
@@ -77,7 +80,10 @@ const ItemList = () => {
         {/* 등록버튼 -> 클릭 시 등록 페이지로 이동*/}
         <button 
           type='button'
-          onClick={e => {nav('/reg')}}
+          onClick={e => {
+            increaseCnt();
+            nav('/reg')
+          }}
         >상품 등록</button>
       </div>
     </div>
