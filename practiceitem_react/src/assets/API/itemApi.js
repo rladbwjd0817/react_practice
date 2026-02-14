@@ -20,6 +20,7 @@ export const goDetailData = async (itemNo) => {
 export const goDelete = async (itemNo) => {
   try{
     const response = await axios.delete(`http://localhost:8080/items/${itemNo}`);
+    alert('상품이 삭제 되었습니다!')
     return response;
   }catch(e){
     console.log('삭제 api 요청 중 오류 발생', e)

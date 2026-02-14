@@ -54,7 +54,7 @@ const ItemList = () => {
                 return(
                   <tr key={item.itemNo}>
                     <td>
-                      {itemList.length - index  - 1}
+                      {itemList.length - index  - 0}
                     </td>
                     <td 
                       onClick={e => {nav(`/detail/${item.itemNo}`)}}
@@ -74,7 +74,6 @@ const ItemList = () => {
         <button 
           type='button'
           onClick={e => {
-            increaseCnt();
             nav('/reg')
           }}
         >상품 등록</button>
