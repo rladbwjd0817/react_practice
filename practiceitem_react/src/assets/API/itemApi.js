@@ -1,23 +1,27 @@
+/* item과 관련된 모든 api 모음집 */
+
 import axios from "axios";
 
-/* 한 상품 조회하는 axios 요청 함수*/
-export const selectOneData = async (itemNo) => {
+/**
+ * 상품 상세 조회api
+ * @param {integer} itemNo 상품번호 
+ * @returns 
+ */
+export const goDetailData = async (itemNo) => {
   try{
-    const response =  await axios.get(`http://localhost:8080/items/${itemNo}`);
+    const response = await axios.get(`http://localhost:8080/items/${itemNo}`);
     return response;
   }catch(e){
-    alert('어이쿠 한 상품 조회하는데 실패했네?!!')
-    console.log(e);
+    console.log('상세 조회 api 오류 발생', e);
   }
 }
 
-/* 상품 삭제하는 axios 요청 함수 */
-export const delOne =  async (itemNo) => {
+
+export const goDelete = async (itemNo) => {
   try{
     const response = await axios.delete(`http://localhost:8080/items/${itemNo}`);
     return response;
-  } catch(e){
-    alert('상품 삭제 실패했는데 우짤래?!')
-    console.log(e)
+  }catch(e){
+    console.log('삭제 api 요청 중 오류 발생', e)
   }
 }

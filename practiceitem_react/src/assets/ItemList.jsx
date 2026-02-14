@@ -9,14 +9,7 @@ const ItemList = () => {
   /* 조회한 상품목록을 저장할 state 변수 */
   const [itemList, setItemList] = useState([]);
 
-   /* No = cnt 값 증가하는 변수 생성 */
-  /* const [cnt, setCnt] = useState(); */
-
-  /* cnt값 1씩 증가하는 함수 */
-  /* const increaseCnt = () => {
-    setCnt(cnt + 1);
-    
-  }  */
+  
 
   /* 마운트 시 상품목록을 조회 */
   useEffect(() => {getItemList()}, []);
