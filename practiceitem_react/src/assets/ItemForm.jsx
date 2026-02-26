@@ -13,6 +13,7 @@ const ItemForm = () => {
   const [regItem, setRegItem] = useState({
     itemName : '',
     itemPrice : '',
+    itemCnt : '',
     regname : '',
     itemIntro : ''
   });
@@ -78,6 +79,17 @@ const ItemForm = () => {
                   type="text" 
                   name='itemPrice'
                   value={regItem.itemPrice}
+                  onChange={e => {newItemData(e), handleDisabled()}}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>수량</td>
+              <td>
+                <input 
+                  type="number" 
+                  name='itemCnt'
+                  value={regItem.itemCnt}
                   onChange={e => {newItemData(e), handleDisabled()}}
                 />
               </td>

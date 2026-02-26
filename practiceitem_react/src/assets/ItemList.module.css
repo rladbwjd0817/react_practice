@@ -1,0 +1,60 @@
+ @font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+ @font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+ .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+ }
+
+ .container h2{
+  font-family: 'Paperozi';
+ }
+
+ .thead_div tr{
+   border-bottom: 1px solid rgb(255, 240, 207);
+   background-color: rgb(255, 255, 161);
+   text-align: center;
+  }
+  
+  .thead_div > tr > td{
+    font-family: 'Paperozi';
+  }
+  
+  .tbody_div tr {
+    border-bottom: 1px solid rgb(255, 240, 207);
+    background-color: rgb(252, 252, 227);
+    text-align: center;
+  }
+  
+  .tbody_div tr:hover{
+   background-color: rgba(252, 252, 131, 0.7);
+  }
+
+  .tbody_div > tr > td:nth-child(3){
+    cursor: pointer;
+  }
+
+ .tbody_div > tr > td{
+  font-family: 'NanumSquareRound';
+ }
+
+ .btn_div button{
+  background-color: rgb(229, 253, 181);
+  border: 1px solid rgb(184, 230, 115);
+  border-radius: 4px;
+  cursor: pointer;
+ }

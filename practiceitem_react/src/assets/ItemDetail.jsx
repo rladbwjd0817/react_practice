@@ -31,7 +31,7 @@ const ItemDetail = () => {
     getDetailData();
   }, []);
 
-  
+  console.log('상세조회 - ', detailData)
 
   return (
     <div>
@@ -43,11 +43,13 @@ const ItemDetail = () => {
           <tbody>
             <tr>
               <td>등록일</td>
-              <td>{detailData.regdata}</td>
+              <td>{detailData.regdate}</td>
               <td>등록자</td>
               <td>{detailData.regname}</td>
               <td>가격</td>
-              <td>{detailData.itemPrice}</td>
+              <td>{detailData.itemPrice}원</td>
+              <td>수량</td>
+              <td>{detailData.itemCnt}개</td>
             </tr>
             <tr>
               <td>상품명</td>
