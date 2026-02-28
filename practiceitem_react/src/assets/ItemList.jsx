@@ -16,6 +16,9 @@ const ItemList = () => {
   /* 선택한 체크박스 데이터들을 저장할 state 변수 */
   const [itemNoList, setItemNoList] = useState([]);
 
+  /*  전체 체크박스 체크여부 저장할 state 변수 */
+  const [isChecked, setIsChecked] = useState(true);
+
   /* 마운트 시 상품목록을 조회 */
   useEffect(() => {getItemList()}, []);
 
@@ -36,6 +39,7 @@ const ItemList = () => {
         itemNoArr.push(e.itemNo);
       }
       setItemNoList(itemNoArr);
+      console.log('itemNoArr -', itemNoArr )
       /* 배열에 특정 데이터 있는지 검사 */
       const itemArrResult = itemNoList.includes(itemNoArr);
       
@@ -52,9 +56,6 @@ const ItemList = () => {
     
   }
   
-  
-    
-
   /* 총 상품 금액 조회 함수 실행 */
   const getTotalPrice = () => {
     let sum = 0;
@@ -67,7 +68,23 @@ const ItemList = () => {
 
   console.log('itemList -', itemList);
 
-  
+  /* 체크박스 컨트롤 함수 */
+  const handleCheckbox = (e) => {
+    const updated = [...itemNoList, Number(e.target.value)];
+    /* 체크가 되었을 때 */
+    if(e.target.checked){
+      setItemNoList(updated)
+      /* 전부 체크됐으면 전체 체크박스도 true */
+      setIsChecked(updated.length === itemList.length);
+    }
+    /* 체크 해제 되었을 때 */
+    else{
+      setItemNoList(itemNoList.filter(each => each !== Number(e.target.value)))
+      /* 하나라도 해제되면 전체 체크 해제 */
+      setIsChecked(false);
+    }
+    console.log('itemNoList - ', itemNoList)
+  }
   
 
   return (
@@ -86,7 +103,16 @@ const ItemList = () => {
               <td>
                 <input 
                   type="checkbox" 
-                  checked={true}
+                  checked={isChecked}
+                  onChange={e => {
+                    setIsChecked(e.target.checked)
+                    if(e.target.checked){
+                      setItemNoList(itemList.map(each => each.itemNo))
+                    }
+                    else{
+                      setItemNoList([])
+                    }
+                  }}
                 />
               </td> 
               <td>상품명</td>
@@ -107,7 +133,9 @@ const ItemList = () => {
                     <td>
                       <input 
                         type="checkbox" 
-                        checked={true}
+                        checked={itemNoList.includes(item.itemNo)}
+                        value={item.itemNo}
+                        onChange={e => handleCheckbox(e)}
                       />
                     </td>
                     <td 

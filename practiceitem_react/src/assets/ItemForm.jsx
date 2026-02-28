@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Input from '../compononet/Input';
 
 /* 상품목록 조회 페이지 */
 
@@ -64,8 +65,7 @@ const ItemForm = () => {
             <tr>
               <td>상품명</td>
               <td>
-                <input 
-                  type="text" 
+                <Input 
                   name='itemName'
                   value={regItem.itemName}
                   onChange={e => {newItemData(e), handleDisabled()}}
@@ -75,8 +75,7 @@ const ItemForm = () => {
             <tr>
               <td>가격</td>
               <td>
-                <input 
-                  type="text" 
+                <Input 
                   name='itemPrice'
                   value={regItem.itemPrice}
                   onChange={e => {newItemData(e), handleDisabled()}}
@@ -86,8 +85,7 @@ const ItemForm = () => {
             <tr>
               <td>수량</td>
               <td>
-                <input 
-                  type="number" 
+                <Input
                   name='itemCnt'
                   value={regItem.itemCnt}
                   onChange={e => {newItemData(e), handleDisabled()}}
@@ -97,8 +95,7 @@ const ItemForm = () => {
             <tr>
               <td>등록자명</td>
               <td>
-                <input 
-                  type="text" 
+                <Input 
                   name='regname'
                   value={regItem.regname}
                   onChange={e => newItemData(e)}
