@@ -119,6 +119,7 @@ const ItemList = () => {
               <td>수량</td>
               <td>가격</td>
               <td>판매자</td>
+              <td>구매자</td>
               <td>등록일</td>
             </tr>
           </thead>
@@ -144,6 +145,7 @@ const ItemList = () => {
                     <td>{item.itemCnt}</td>
                     <td>{item.itemPrice.toLocaleString()}원</td>
                     <td>{item.regname}</td>
+                    <td>{item.memName}</td>
                     <td>{item.regdate}</td>
                   </tr>
                 )
@@ -163,6 +165,12 @@ const ItemList = () => {
             nav('/reg')
           }}
         >상품 등록</button>
+        <button 
+          type='button'
+          onClick={e => {nav('/login')}}  
+        >
+          로그인
+        </button>
       </div>
     </div>
   )
