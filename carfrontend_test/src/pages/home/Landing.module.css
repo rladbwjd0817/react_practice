@@ -1,0 +1,60 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.container{
+  width: 100%;
+  background-color: black;
+  /* position: relative */
+}
+
+.landing_img{
+  position: relative;
+}
+
+.landing_img > img{
+  width: 100%;
+  height: 940px;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.landing_car{
+  position: absolute;
+  top: 37%;
+  left: 32%;
+}
+
+.landing_car::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, 
+    rgba(0, 102, 255, 1.0) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.landing_car > img{
+  position: absolute;
+  top: 37%;
+  left: 32%;
+  width: 800px;
+  transform: rotate(-10deg);
+  z-index: 10;
+  pointer-events: none;
+  
+}
+
+.landing_car > img:hover{
+  transition: all 0.5s ease-in-out 0s;
+}
